@@ -1,59 +1,322 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1">
-        <title>Composition Plan</title>
-        <style>
-            body{
-                font-family:Arial,sans-serif;
-                line-height:1.5;
-                max-width:90rem;
-                margin:auto;
-                padding:1rem;
-                color:#191919;
-                }
-            table{
-                width:100%;
-                border-collapse:collapse;
-                }
-            th,td{
-                padding:.6rem;
-                border:1px solid #999;
-                text-align:left;
-                vertical-align:top;
-                }
-            th{
-                background:#f1f1f1;
-                }
-        </style>
-        </head>
-        <body>
-            <h1>L6 · Composition Plan</h1>
-            <p>Complete one row for every positioned, layered, clipped, rounded, or shape-wrapped element. Duplicate rows as needed.</p>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Element</th>
-                        <th>Content purpose</th>
-                        <th>Normal-flow baseline</th>
-                        <th>Chosen technique and why</th>
-                        <th>Containing block / stacking context</th>
-                        <th>Fallback or disengagement</th>
-                        <th>Required test</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Example only</td>
-                        <td>Replace</td>
-                        <td>Replace</td>
-                        <td>Replace</td>
-                        <td>Replace</td>
-                        <td>Replace</td>
-                        <td>Replace</td>
-                    </tr>
-                </tbody>
-            </table>
-        </body>
-        </html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Composition Plan</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.5;
+        max-width: 90rem;
+        margin: auto;
+        padding: 1rem;
+        color: #191919;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        padding: 0.6rem;
+        border: 1px solid #999;
+        text-align: left;
+        vertical-align: top;
+      }
+      th {
+        background: #f1f1f1;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>L6 · Composition Plan</h1>
+
+    <p>
+      Complete one row for every positioned, layered, clipped, rounded, or
+      shape-wrapped element. Duplicate rows as needed.
+    </p>
+
+    <section>
+      <h2>Project Overview</h2>
+
+      <ul>
+        <li><strong>Project title:</strong> Move More, Feel Better</li>
+        <li><strong>Project type:</strong> Public-information project</li>
+        <li><strong>Topic:</strong> How exercise improves health</li>
+        <li><strong>Audience:</strong> Students and community members</li>
+        <li>
+          <strong>Purpose:</strong>
+          Explain how regular movement can improve physical and mental health.
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Reading Order</h2>
+
+      <ol>
+        <li>Site header and navigation</li>
+        <li>Hero eyebrow and main title</li>
+        <li>Introduction</li>
+        <li>Main feature image</li>
+        <li>Physical-health section</li>
+        <li>Mental well-being section</li>
+        <li>Secondary image</li>
+        <li>Practical advice section</li>
+        <li>Conclusion</li>
+        <li>Call to action</li>
+        <li>Sources and documentation</li>
+        <li>Footer</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Layout Plan</h2>
+
+      <ul>
+        <li>CSS Grid is used for the hero and article regions.</li>
+        <li>Flexbox is used for navigation and metadata.</li>
+        <li>Paragraphs remain in normal document flow.</li>
+        <li>No essential content is positioned manually.</li>
+        <li>There are no fixed-height containers for essential text.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Shape Plan</h2>
+
+      <ul>
+        <li>Rounded corners are used on images, cards, panels, and buttons.</li>
+        <li>
+          <code>clip-path</code> creates a decorative angled edge on the
+          call-to-action panel.
+        </li>
+        <li>
+          <code>shape-outside: circle(50%)</code> allows text to wrap around a
+          circular image.
+        </li>
+        <li>
+          If these effects do not work, the content remains readable in normal
+          blocks.
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Layer Plan</h2>
+
+      <ul>
+        <li><code>--layer-base: 0</code></li>
+        <li><code>--layer-content: 1</code></li>
+        <li><code>--layer-decoration: 2</code></li>
+        <li><code>--layer-anchored: 3</code></li>
+        <li><code>--layer-focus: 4</code></li>
+      </ul>
+
+      <p>
+        Essential content stays in normal document flow. Decorative layers do
+        not block links or controls, and keyboard focus remains visible.
+      </p>
+    </section>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Element</th>
+          <th>Content purpose</th>
+          <th>Normal-flow baseline</th>
+          <th>Chosen technique and why</th>
+          <th>Containing block / stacking context</th>
+          <th>Fallback or disengagement</th>
+          <th>Required test</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Hero badge</td>
+          <td>Displays the decorative message “Small steps count.”</td>
+          <td>
+            The badge could appear as a normal label above or below the hero
+            content.
+          </td>
+          <td>
+            Use <code>position: absolute</code> to anchor the badge over the
+            hero without creating a content column.
+          </td>
+          <td>
+            The <code>.hero</code> section is the containing block because it
+            uses <code>position: relative</code>. The badge uses the anchored
+            layer token.
+          </td>
+          <td>
+            On small screens, reduce or reposition the badge so it does not
+            cover the title, image, links, or important text.
+          </td>
+          <td>
+            Test at 320px and 1280px, with a long title, keyboard focus, and
+            pointer activation.
+          </td>
+        </tr>
+
+        <tr>
+          <td>Sticky section note</td>
+          <td>
+            Highlights the main idea and links to important story sections.
+          </td>
+          <td>
+            The note appears as a normal <code>&lt;aside&gt;</code> beside or
+            after the article.
+          </td>
+          <td>
+            Use <code>position: sticky</code> so the note remains visible while
+            the reader moves through the story.
+          </td>
+          <td>
+            The <code>.reading-shell</code> is the containing layout context.
+            The note remains bounded by its containing section.
+          </td>
+          <td>
+            At smaller widths, change the note to
+            <code>position: static</code>.
+          </td>
+          <td>
+            Test at 320px and 1280px, at the page and section boundaries, and
+            with doubled paragraphs.
+          </td>
+        </tr>
+
+        <tr>
+          <td>Overlapping quotation</td>
+          <td>
+            Emphasizes that an exercise routine should fit realistically into a
+            person’s life.
+          </td>
+          <td>
+            The quotation appears as a normal blockquote near the secondary
+            image.
+          </td>
+          <td>
+            Use controlled absolute positioning to overlap the illustration
+            without positioning essential paragraphs or links.
+          </td>
+          <td>
+            The <code>.image-frame</code> is the containing block because it
+            uses <code>position: relative</code>.
+          </td>
+          <td>
+            At small widths, remove absolute positioning and return the
+            quotation to normal document flow.
+          </td>
+          <td>
+            Test at 320px, 768px, and 1280px, with doubled paragraphs and
+            keyboard focus.
+          </td>
+        </tr>
+
+        <tr>
+          <td>Rounded images and cards</td>
+          <td>
+            Groups related visual content and creates a consistent editorial
+            appearance.
+          </td>
+          <td>
+            Images, cards, notes, and panels remain ordinary block elements.
+          </td>
+          <td>Use <code>border-radius</code> as a visual enhancement only.</td>
+          <td>
+            These elements remain in normal flow and do not need a new stacking
+            context.
+          </td>
+          <td>
+            If the border radius is removed, the content remains complete as
+            rectangular blocks.
+          </td>
+          <td>
+            Test at 320px, 768px, 1280px, 200% zoom, and with CSS disabled.
+          </td>
+        </tr>
+
+        <tr>
+          <td>Call-to-action panel</td>
+          <td>
+            Encourages readers to choose one small, manageable movement goal.
+          </td>
+          <td>
+            The heading, paragraph, and link appear in a normal content panel.
+          </td>
+          <td>
+            Use <code>clip-path</code> to create a decorative angled panel edge.
+          </td>
+          <td>
+            The panel remains in normal article flow. Its essential content is
+            not dependent on clipping.
+          </td>
+          <td>
+            If <code>clip-path</code> is disabled, the panel remains a readable
+            rounded rectangle.
+          </td>
+          <td>
+            Disable <code>clip-path</code> and test the panel, link, keyboard
+            focus, 320px layout, and CSS-disabled reading order.
+          </td>
+        </tr>
+
+        <tr>
+          <td>Editorial shape wrap</td>
+          <td>
+            Allows introductory text to flow around a decorative circular image.
+          </td>
+          <td>
+            The image appears as a normal block before or beside the paragraph.
+          </td>
+          <td>
+            Use <code>float</code>, <code>shape-outside: circle(50%)</code>, and
+            <code>shape-margin</code> for an editorial text wrap.
+          </td>
+          <td>
+            The shape participates in the article’s normal flow and does not
+            create an arbitrary positional column.
+          </td>
+          <td>
+            If shape wrapping is unsupported or disabled, the image becomes a
+            normal block and the text remains readable.
+          </td>
+          <td>
+            Disable <code>shape-outside</code> and test at 320px, 200% zoom,
+            with doubled paragraphs, and with CSS disabled.
+          </td>
+        </tr>
+
+        <tr>
+          <td>Layer token system</td>
+          <td>
+            Keeps overlaps predictable and prevents arbitrary high
+            <code>z-index</code> values.
+          </td>
+          <td>
+            Elements appear in source order without assigned layer values.
+          </td>
+          <td>
+            Use the documented tokens
+            <code>--layer-base</code>, <code>--layer-content</code>,
+            <code>--layer-decoration</code>, <code>--layer-anchored</code>, and
+            <code>--layer-focus</code>.
+          </td>
+          <td>
+            Only elements requiring layering receive a token. Decorative
+            elements use <code>pointer-events: none</code>.
+          </td>
+          <td>
+            Removing the layer values leaves the semantic source order intact.
+            Focus outlines remain visible above decorative elements.
+          </td>
+          <td>
+            Inspect the hero, badge, decoration, sticky note, image frame,
+            quotation, and focused links in browser developer tools.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
