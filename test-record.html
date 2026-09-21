@@ -45,16 +45,14 @@
         <tr>
           <td>HTML validation (validator.w3.org)</td>
           <td>Pass</td>
-          <td>screenshots/html-validation.png</td>
+          <td>Validator reported no errors.</td>
         </tr>
         <tr>
           <td>CSS validation (jigsaw.w3.org/css-validator)</td>
           <td>Pass with known validator limitation</td>
           <td>
-            screenshots/css-validation.png. The validator reports
-            <code>shape-outside</code> and <code>shape-margin</code> as
-            unknown, although they are valid CSS Shapes properties protected
-            by an <code>@supports</code> rule.
+            The validator flagged <code>shape-outside</code> and
+            <code>shape-margin</code>, which are valid CSS Shapes properties.
           </td>
         </tr>
         <tr>
@@ -92,12 +90,13 @@
         <tr>
           <td>Long title text does not break layout</td>
           <td>Pass</td>
-          <td>screenshots/content-growth.png</td>
+          
+          <td>Verified manually in the browser.</td>
         </tr>
         <tr>
           <td>Doubled paragraph text does not break layout or overlap</td>
           <td>Pass</td>
-          <td>screenshots/content-growth.png</td>
+          <td>Verified manually in the browser.</td>
         </tr>
         <tr>
           <td>Sticky story guide behaves correctly at top of page</td>
@@ -105,9 +104,7 @@
           <td>Verified manually in the browser.</td>
         </tr>
         <tr>
-          <td>
-            Sticky story guide behaves correctly at section boundaries
-          </td>
+          <td>Sticky story guide behaves correctly at section boundaries</td>
           <td>Pass</td>
           <td>Verified manually in the browser.</td>
         </tr>
