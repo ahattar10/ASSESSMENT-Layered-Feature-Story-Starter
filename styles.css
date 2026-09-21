@@ -74,6 +74,7 @@ body {
   padding: 0.5rem;
   background: var(--color-accent);
   color: #191919;
+   z-index: var(--layer-anchored);
 }
 main {
   display: grid;
@@ -108,6 +109,9 @@ article section {
 }
 .image-frame {
   position: relative;
+}
+.image-frame p {
+  padding-inline-end: 18rem;
 }
 .overlap-quote {
   margin: 2rem 0;
@@ -176,6 +180,9 @@ img {
     z-index: var(--layer-anchored);
     max-width: 16rem;
     background: var(--color-surface);
+  }
+  .image-frame p {
+    padding-inline-end: 18rem;
   }
   @supports (shape-outside: circle(50%)) {
     .shape-portrait {

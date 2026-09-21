@@ -135,7 +135,7 @@
       <tbody>
         <tr>
           <td>Hero badge</td>
-          <td>Displays the decorative message “Small steps count.”</td>
+          <td>Displays the decorative message "Anchored detail."</td>
           <td>
             The badge could appear as a normal label above or below the hero
             content.
@@ -145,9 +145,9 @@
             hero without creating a content column.
           </td>
           <td>
-            The <code>.hero</code> section is the containing block because it
-            uses <code>position: relative</code>. The badge uses the anchored
-            layer token.
+            The <code>.feature-header</code> section is the containing block
+            because it uses <code>position: relative</code>. The badge uses the
+            anchored layer token.
           </td>
           <td>
             On small screens, reduce or reposition the badge so it does not
@@ -160,25 +160,27 @@
         </tr>
 
         <tr>
-          <td>Sticky section note</td>
+          <td>Sticky story guide</td>
           <td>
-            Highlights the main idea and links to important story sections.
+            Provides persistent links to the story sections so readers can
+            jump around while scrolling.
           </td>
           <td>
-            The note appears as a normal <code>&lt;aside&gt;</code> beside or
+            The guide appears as a normal <code>&lt;aside&gt;</code> beside or
             after the article.
           </td>
           <td>
-            Use <code>position: sticky</code> so the note remains visible while
-            the reader moves through the story.
+            Use <code>position: sticky</code> so the guide remains visible
+            while the reader moves through the story.
           </td>
           <td>
-            The <code>.reading-shell</code> is the containing layout context.
-            The note remains bounded by its containing section.
+            The <code>&lt;main&gt;</code> element is the containing layout
+            context because it uses <code>display: grid</code>. The guide
+            remains bounded within the grid track it occupies.
           </td>
           <td>
-            At smaller widths, change the note to
-            <code>position: static</code>.
+            Below the 52rem breakpoint, the guide is not sticky and appears in
+            normal document flow.
           </td>
           <td>
             Test at 320px and 1280px, at the page and section boundaries, and
@@ -193,12 +195,13 @@
             person’s life.
           </td>
           <td>
-            The quotation appears as a normal blockquote near the secondary
-            image.
+            The quotation appears as a normal blockquote at the end of the
+            "Start With a Realistic Change" section.
           </td>
           <td>
-            Use controlled absolute positioning to overlap the illustration
-            without positioning essential paragraphs or links.
+            Use controlled absolute positioning to let the quote overlap the
+            surrounding paragraph's white space without covering essential
+            paragraphs or links.
           </td>
           <td>
             The <code>.image-frame</code> is the containing block because it
