@@ -9,9 +9,10 @@
   --radius: 0.5rem;
   --measure: 68ch;
   --layer-base: 0;
-  --layer-raised: 10;
-  --layer-sticky: 20;
-  --layer-overlay: 30;
+  --layer-content: 1;
+  --layer-decoration: 2;
+  --layer-anchored: 3;
+  --layer-focus: 4;
 }
 *,
 *::before,
@@ -33,6 +34,30 @@ body {
   padding: clamp(2rem, 7vw, 6rem);
   background: var(--color-action);
   color: #fff;
+}
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-block-end: 1.5rem;
+}
+.site-header nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.site-header nav a {
+  color: #fff;
+  text-decoration: none;
+}
+.site-header nav a:hover {
+  text-decoration: underline;
+}
+.site-name {
+  font-weight: 700;
+  margin: 0;
 }
 .eyebrow {
   color: var(--color-accent);
@@ -81,6 +106,12 @@ article section {
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
 }
+.image-frame {
+  position: relative;
+}
+.overlap-quote {
+  margin: 2rem 0;
+}
 img {
   display: block;
   max-width: 100%;
@@ -102,6 +133,26 @@ img {
   padding: 1rem;
   background: #f1f1f1;
 }
+.action-panel {
+  margin: 3rem 0;
+  padding: 2rem;
+  border-radius: var(--radius);
+  background: var(--color-action);
+  color: #fff;
+}
+.action-panel h2 {
+  margin-block-start: 0;
+}
+.cta-link {
+  display: inline-block;
+  margin-block-start: 1rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius);
+  background: var(--color-accent);
+  color: #191919;
+  text-decoration: none;
+  font-weight: 700;
+}
 @media (min-width: 52rem) {
   main {
     grid-template-columns: 14rem 1fr;
@@ -109,12 +160,21 @@ img {
   .story-guide {
     position: sticky;
     inset-block-start: 1rem;
-    z-index: var(--layer-sticky);
+    z-index: var(--layer-anchored);
   }
   .pull-quote {
     position: relative;
-    z-index: var(--layer-raised);
+    z-index: var(--layer-anchored);
     margin-inline-start: -4rem;
+    background: var(--color-surface);
+  }
+  .overlap-quote {
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: var(--layer-anchored);
+    max-width: 16rem;
     background: var(--color-surface);
   }
   @supports (shape-outside: circle(50%)) {
@@ -128,6 +188,9 @@ img {
 @supports (clip-path: polygon(0 0)) {
   .feature-figure img {
     clip-path: polygon(0 0, 100% 5%, 94% 100%, 6% 94%);
+  }
+  .action-panel {
+    clip-path: polygon(0 0, 98% 0, 100% 14%, 100% 100%, 2% 100%, 0 86%);
   }
 }
 :focus-visible {
