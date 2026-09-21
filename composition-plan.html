@@ -162,16 +162,16 @@
         <tr>
           <td>Sticky story guide</td>
           <td>
-            Provides persistent links to the story sections so readers can
-            jump around while scrolling.
+            Provides persistent links to the story sections so readers can jump
+            around while scrolling.
           </td>
           <td>
             The guide appears as a normal <code>&lt;aside&gt;</code> beside or
             after the article.
           </td>
           <td>
-            Use <code>position: sticky</code> so the guide remains visible
-            while the reader moves through the story.
+            Use <code>position: sticky</code> so the guide remains visible while
+            the reader moves through the story.
           </td>
           <td>
             The <code>&lt;main&gt;</code> element is the containing layout
@@ -307,15 +307,16 @@
             <code>--layer-focus</code>.
           </td>
           <td>
-            Only elements requiring layering receive a token. Decorative
-            elements use <code>pointer-events: none</code>.
+            Only elements requiring layering receive a token. The decorative
+            hero badge uses <code>pointer-events: none</code> so it never
+            intercepts clicks.
           </td>
           <td>
             Removing the layer values leaves the semantic source order intact.
             Focus outlines remain visible above decorative elements.
           </td>
           <td>
-            Inspect the hero, badge, decoration, sticky note, image frame,
+            Inspect the hero badge, sticky story guide, image frame, overlap
             quotation, and focused links in browser developer tools.
           </td>
         </tr>

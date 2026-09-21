@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Support and Fallback Record</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.5;
+        max-width: 90rem;
+        margin: auto;
+        padding: 1rem;
+        color: #191919;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th, td {
+        padding: 0.6rem;
+        border: 1px solid #999;
+        text-align: left;
+        vertical-align: top;
+      }
+      th {
+        background: #f1f1f1;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>L6 · Support and Fallback Record</h1>
+    <p>Support information checked: September 21, 2026</p>
+
+    <h2>Reference Links</h2>
+    <ul>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position">MDN: CSS position</a></li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path">MDN: CSS clip-path</a></li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/shape-outside">MDN: CSS shape-outside</a></li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/shape-margin">MDN: CSS shape-margin</a></li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/z-index">MDN: CSS z-index</a></li>
+    </ul>
+
+    <h2>Feature Support Table</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>Used for</th>
+          <th>Fallback</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>position: sticky</code></td>
+          <td>Sticky story guide (<code>.story-guide</code>)</td>
+          <td>Becomes normal document flow below the 52rem breakpoint</td>
+        </tr>
+        <tr>
+          <td><code>clip-path</code></td>
+          <td>Decorative CTA panel edge (<code>.action-panel</code>) and feature-figure image</td>
+          <td>Panel/image remains a normal rounded rectangle if unsupported</td>
+        </tr>
+        <tr>
+          <td><code>shape-outside</code></td>
+          <td>Editorial text wrap around the portrait image (<code>.shape-portrait</code>)</td>
+          <td>Image becomes a normal block; text remains readable</td>
+        </tr>
+        <tr>
+          <td><code>shape-margin</code></td>
+          <td>Spacing around the circular shape wrap</td>
+          <td>Text sits closer to the image but stays readable without it</td>
+        </tr>
+        <tr>
+          <td><code>z-index</code> (tokenized)</td>
+          <td>Controlled layering of badge, sticky guide, and overlap quote</td>
+          <td>Small tokenized values only — no arbitrary high numbers</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

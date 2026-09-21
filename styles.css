@@ -42,6 +42,7 @@ body {
   justify-content: space-between;
   gap: 1rem;
   margin-block-end: 1.5rem;
+  padding-inline-end: 7rem;
 }
 .site-header nav {
   display: flex;
@@ -74,7 +75,8 @@ body {
   padding: 0.5rem;
   background: var(--color-accent);
   color: #191919;
-   z-index: var(--layer-anchored);
+  z-index: var(--layer-anchored);
+  pointer-events: none;
 }
 main {
   display: grid;
